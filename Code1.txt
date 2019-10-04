@@ -1,0 +1,327 @@
+//Question 1
+import java.util.*;
+class Conversion 
+{
+	public double KMToMiles(double distance) 
+	{
+		distance = distance * 1.609;
+		return distance;
+	}
+	public double MIlesToKM(double distance) 
+	{
+		distance = distance / 1.609;
+		return distance;
+	}
+	public double FeetToMetres(double distance) 
+	{
+		distance = distance / 3.28;
+		return distance;
+	}
+	
+	public double MetresToFeet(double distance) 
+	{
+		distance = distance * 3.28;
+		return distance;
+	}
+	public double KgToPounds(double weight) 
+	{
+		weight = weight * 2.2;
+		return weight;
+	}
+	public double PoundsToKg(double weight) 
+	{
+		weight = weight / 2.2;
+		return weight;
+	}
+	public double CelciusToFahrenheit(double temperature) 
+	{
+		temperature = (9/5.0) * temperature + 32;
+		return temperature;
+	}
+	public double FahrenheitToCelcius(double temperature) 
+	{
+		temperature = (5/9.0) * (temperature - 32);
+		return temperature;
+	}
+}
+class Calculation 
+{
+	public int SumOfSeries(int start, int end, int incr) 
+	{
+		int tot = 0;	
+		for(int x = start; x <= end; x = x + incr) 
+		{
+			tot = tot + x;
+		}
+		return tot;
+	}
+	public int SumOfArray(int data[], int size) 
+	{
+		int tot = 0;
+		
+		for(int x = 0; x < size; x++) 
+		{
+			tot = tot + data[x];
+		}
+		return tot;
+	}
+	public int ProductOfSeries(int start, int end, int incr) 
+	{
+		int product = 1;
+		
+		for(int x = start; x <= end; x = x + incr) 
+		{
+			product = product * x;
+		}
+		
+		return product;
+	}
+	public int ProductOfArray(int data[], int size) 
+	{
+		int product = 1;
+		
+		for(int x = 0; x < size; x++) 
+		{
+			product = product * data[x];
+		}
+		
+		return product;
+	}
+}
+class Menu 
+{	
+	public void displayMainMenu() 
+	{
+		int selections;
+		Scanner input = new Scanner(System.in);	
+		System.out.println("Select an Option");
+		System.out.println("1 - Conversion");
+		System.out.println("2 - Calculation");
+		System.out.println("0 - Exit");
+		System.out.print("Input an Option: ");
+		selections = input.nextInt();	
+		switch(selections)
+		 {	
+		case 1 : displayConversionSubMenu();
+				 break;
+		case 2 : displayCalculationSubMenu();
+				 break;		 
+		case 0 : System.out.println("Bye!!! Come back again...");
+				 break;		 
+		default : System.out.println("Error!!! There is no such an option!!! Please Input again...");
+				  displayMainMenu();
+				  break;		
+		}	
+	}
+	public void displayConversionSubMenu()
+	{
+		int selections;	
+		System.out.println("Select an Option");
+		System.out.println("1 - Length Conversions");
+		System.out.println("2 - Weight Conversions");
+		System.out.println("3 - Temperature Conversions");
+		System.out.println("0 - Exit");
+		System.out.print("Input an Option: ");
+		Scanner input = new Scanner(System.in);
+		selections = input.nextInt();
+		switch(selections) 
+		{
+		case 1 : displayConversionLengthSubMenu();
+				 break;		 
+		case 2 : displayConversionWeightSubMenu();
+				 break;		 
+		case 3 : displayConversionTemperatureSubMenu();
+				 break;
+		case 0 : System.out.println("Bye!!! Come back again...");;
+				 break;		 
+		default : System.out.println("Error!!! There is no such an option!!! Please Input again...");
+				  displayConversionSubMenu();
+				  break;		 
+		}	
+	}
+	public void displayCalculationSubMenu() 
+	{	
+		int selections;
+		Scanner input = new Scanner(System.in);	
+		System.out.println("Select an Option");
+		System.out.println("1 - Sum Of Series");
+		System.out.println("2 - Sum Of Array");
+		System.out.println("3 - Product Of Series");
+		System.out.println("4 - Product Of Array");
+		System.out.println("0 - Exit");
+		System.out.print("Input an Option: ");
+		selections = input.nextInt();
+		Calculation cal1 = new Calculation();
+		switch(selections) 
+		{
+		case 1 : System.out.println("Input Start Value, End Value, 			Increment Number: ");
+				 int start = input.nextInt();
+				 int end = input.nextInt();
+				 int incr = input.nextInt();
+				 int tot = cal1.SumOfSeries(start, end, incr);
+				 System.out.println("Sum Of Series: " + tot);
+				 System.out.print("\n\n");
+				 displayCalculationSubMenu();
+				 break;		 
+		case 2 : System.out.println("Input Array Size: ");
+				 int size = input.nextInt();
+				 int totArray;
+				 int array[] = new int[10];
+				 for(int x = 0; x < size; x++) 
+				 {
+					 System.out.println("Input number " + (x + 1) + ": ");
+					 array[x] = input.nextInt();
+				 }
+				 totArray = cal1.SumOfArray(array, size);
+				 System.out.println("Sum Of Array: " + totArray);
+				 System.out.print("\n\n");
+				 displayCalculationSubMenu();
+				 break;	 
+		case 3 : System.out.println("Input Start Value,End Value,Increment Number: ");
+				 int startProduct = input.nextInt();
+				 int endProduct = input.nextInt();
+				 int incrProduct = input.nextInt();
+				 int product = cal1.ProductOfSeries(startProduct, endProduct, incrProduct);
+				 System.out.println("Sum Of Series: " + product);
+				 System.out.print("\n\n");
+				 displayCalculationSubMenu();
+				 break;	 
+		case 4 : System.out.println("Input Array Size: ");
+		 		 int sizeProduct = input.nextInt();
+		         	 int productArray;
+		         	 int arrayProduct[] = new int[10];
+		         	 for(int x = 0; x < sizeProduct; x++) 
+				 {
+		        	 	System.out.println("Input number " + (x + 1) + ": ");
+		        	 	arrayProduct[x] = input.nextInt();
+		         	 }
+		        	 productArray = cal1.ProductOfArray(arrayProduct, sizeProduct);
+		        	 System.out.println("Sum Of Array: " + productArray);
+				 System.out.print("\n\n");
+				 displayCalculationSubMenu();
+				 break;		         
+		case 0 : System.out.println("Bye!!! Come back again...");;
+		 		 break;		
+		 default : System.out.println("Error!!! There is no such an option!!! Please Input again...");
+		 		   displayCalculationSubMenu();
+		 		   break;
+		}
+	}
+	public void displayConversionLengthSubMenu() 
+	{
+		int selections;
+		Scanner input = new Scanner(System.in);	
+		System.out.println("Select an Option");
+		System.out.println("1 - km to Miles");
+		System.out.println("2 - Miles to km");
+		System.out.println("3 - Feet to Metres");
+		System.out.println("4 - Metres to Feet");
+		System.out.println("0 - Exit");
+		System.out.print("Input an Option: ");
+		selections = input.nextInt();
+		Conversion c1 = new Conversion();
+		switch(selections)
+		 {	
+		case 1 : System.out.print("Input Distance in km: ");
+				 double km = input.nextDouble();						 double miles = c1.KMToMiles(km);
+				 System.out.println(km + "km is " + miles + " Miles");
+				 System.out.print("\n\n");
+				 displayConversionLengthSubMenu();
+				 break;			 
+		case 2 : System.out.print("Input Distance in Miles: ");
+		 		 double mile = input.nextDouble();
+		 		 double kms = c1.MIlesToKM(mile);
+		 		 System.out.println(mile + "mile is " + kms + " kms");
+				 System.out.print("\n\n");
+		 		 displayConversionLengthSubMenu();
+		 		 break;		 
+		case 3 : System.out.print("Input Distance in Feet: ");
+		 		 double feet = input.nextDouble();
+		 		 double metres = c1.FeetToMetres(feet);
+		 		 System.out.println(feet + "feet is " + metres + "m");
+				 System.out.print("\n\n");
+		 		 displayConversionLengthSubMenu();
+		 		 break;		 
+		case 4 : System.out.print("Input Distance in Metres: ");
+		 		 double metre = input.nextDouble();
+		 		 double feets = c1.MetresToFeet(metre);
+
+		 		 System.out.println(metre+ "m is " + feets + " Feets");
+				 System.out.print("\n\n");
+		 		 displayConversionLengthSubMenu();
+		 		 break;		 		 
+		case 0 : System.out.println("Bye!!! Come back again...");;
+		 		 break;		 
+		default : System.out.print("Error!!! There is no such an option!!! Please Input again...");
+		 		  displayConversionLengthSubMenu();
+		 		  break;
+		}
+	}	
+	public void displayConversionWeightSubMenu() 
+	{
+		int selections;
+		Scanner input = new Scanner(System.in);		
+		System.out.println("Select an Option");
+		System.out.println("1 - kg to Pounds");
+		System.out.println("2 - Pounds to kg");
+		System.out.println("0 - Exit");
+		System.out.print("Input Option: ");
+		selections = input.nextInt();		
+		Conversion c1 = new Conversion();		
+		switch(selections) {		
+		case 1 : System.out.print("Input Weight in kg: ");
+				 double kg = input.nextDouble();
+				 double pounds = c1.KgToPounds(kg);
+				 System.out.println(kg + "kg is " + pounds + " Pounds");
+				 System.out.print("\n\n");
+				 displayConversionWeightSubMenu();
+				 break;				 
+		case 2 : System.out.print("Input Weight in Pounds: ");
+		 		 double pound = input.nextDouble();
+		 		 double kgs = c1.PoundsToKg(pound);
+		 		 System.out.println(pound + "Pound is " + kgs + "kgs");
+				 System.out.println("\n");
+		 		 displayConversionWeightSubMenu();
+		 		 break;		 
+		case 0 : System.out.print("Bye!!! Come back again...");
+		 		 break;
+		 
+		default : System.out.print("Error!!! There is no such an option!!! Please Input again...");
+				  displayConversionWeightSubMenu();
+		 		  break;				 
+		}
+	}
+		public void displayConversionTemperatureSubMenu() 
+	{
+		int selections;
+		Scanner input = new Scanner(System.in);		
+		System.out.println("Select an Option");
+		System.out.println("1 - Celcius to Fahrenheit");
+		System.out.println("2 - Farhrenheit to Celcius");
+		System.out.println("0 - Exit");
+		System.out.print("Input an Option: ");
+		selections = input.nextInt();		
+		Conversion c1 = new Conversion();
+				switch(selections) {		
+		case 1 : System.out.print("Input Temperature in Celcius: ");
+				 double celcius = input.nextDouble();
+				 double fahrenheits = c1.CelciusToFahrenheit(celcius); 
+				 System.out.println(celcius + "Celcius is " + fahrenheits + " Fahrenheits");
+				 System.out.print("\n\n");
+				 displayConversionTemperatureSubMenu();
+				 break;				 
+		case 2 : System.out.print("Input Temperature in Fahrenheits: ");
+		 		 double fahrenheit = input.nextDouble();
+		 		 double cel = c1.FahrenheitToCelcius(fahrenheit);
+		 		 System.out.println(fahrenheit + "fahrenheit is " + cel + " Celcius");
+				 System.out.print("\n\n");
+		 		 displayConversionTemperatureSubMenu();
+		 		 break;		 
+		case 0 : System.out.print("Bye!!! Come back again...");
+		 		 break;		 
+		default : System.out.print("Error!!! There is no such an option!!! Please Input again...");
+				  displayConversionTemperatureSubMenu();
+		 		  break;			 
+		}
+	}
+}
